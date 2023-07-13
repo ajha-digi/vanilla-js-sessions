@@ -46,4 +46,118 @@ const countLetterOccurance = (str) => {
     console.log(letterCount);
 }
 
-countLetterOccurance("aabbccddeefff");
+// countLetterOccurance("aabbccddeefff");
+
+
+// Count the occurances of a Character in a string
+
+const countOccuranceOfChar = (str, key) => {
+    return str.split(key).length -1
+}
+
+// countOccuranceOfChar("ajeet kumar jha", "a")
+
+const countOccuranceOfCharCustom = (str, key) => {
+    let count = 0;
+    for(let i =0; i< str.length ; i++) {
+        if(str[i] === key) {
+            count++
+        }
+    }
+    return count;
+}
+
+// count no of vowels in the given string 
+
+const countVowels = (str) => {
+    const vowels = "aeiou";
+    const lowerCaseStr = str.toLowerCase();
+    let count = 0;
+
+    for(let char of lowerCaseStr){
+        if(vowels.includes(char)) {
+            count++
+        }
+    }
+
+    // for(let i = 0 ; i < lowerCaseStr.length; i++){
+    //     if(vowels.includes(lowerCaseStr[i])) {
+    //         count++
+    //     }
+    // }
+
+    return count;
+}
+
+
+// check Anagram
+
+const checkAnagram = (str1, str2) => {
+    if(str1.length !== str2.length){
+        return false
+    }
+
+    const sortedStr1 = str1.split("").sort().join("");
+    const sortedStr2 = str2.split("").sort().join("");
+
+    if(sortedStr1 !== sortedStr2) {
+        return false
+    }
+
+    return true;
+}
+
+// checkAnagram("listen","silent");
+
+// Remove duplicates
+
+const removeDuplicate = str => {
+    let uniqeStr = "";
+
+    for(let char of str) {
+        if(!uniqeStr.includes(char)) {
+            uniqeStr += char;
+        }
+    }
+
+    return uniqeStr;
+} 
+
+// console.log( removeDuplicate("ajeet kumar jha"))
+
+
+
+const reverseWords =  str => {
+    let reversedSentence = "";
+    let currentWord = "";
+
+    for(let i = 0; i < str.length ; i++){
+        if(str[i] === ' '){
+            reversedSentence = currentWord +  " " + reversedSentence;
+            currentWord = ''
+        } else {
+            currentWord += str[i] 
+        }
+    }
+    reversedSentence = currentWord + " " + reversedSentence;
+
+    return reversedSentence.trim()
+}   
+
+// console.log(reverseWords("Hello world! This is a sample sentence."))
+
+const reverseLettersInsideWords = str => {
+    const words = str.split(' ');
+    
+    const reverseStr = word => {
+        return word.split('').reverse().join("");
+    } 
+    
+    for(let i = 0; i < words.length ; i++){
+        words[i] = reverseStr(words[i]);
+    }
+
+    return words.join(" ")
+}
+
+console.log(reverseLettersInsideWords("Hello world! This is a sample sentence."))
